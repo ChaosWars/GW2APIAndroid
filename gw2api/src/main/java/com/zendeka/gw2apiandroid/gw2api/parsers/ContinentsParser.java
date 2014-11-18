@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class ContinentsParser {
     public List<Continent> readContinents(JsonReader jsonReader) throws IOException {
-        List<Continent> continents = new ArrayList();
+        ArrayList continents = new ArrayList();
 
         jsonReader.beginObject();
 
@@ -41,10 +41,10 @@ public class ContinentsParser {
     private Continent readContinent(JsonReader jsonReader) throws  IOException {
         final int identifier = Integer.parseInt(jsonReader.nextName());
         String continentName = "";
-        final List<Integer> dimensionsList = new ArrayList();
+        final List<Integer> dimensionsList = new ArrayList<>();
         int minZoom = 0;
         int maxZoom = 0;
-        final List<Integer> floorsList = new ArrayList();
+        final List<Integer> floorsList = new ArrayList<>();
 
         jsonReader.beginObject();
 

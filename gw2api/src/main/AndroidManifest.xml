@@ -8,4 +8,6 @@
 
     </application>
 
+    <!-- This is needed to run the integration tests -->
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
