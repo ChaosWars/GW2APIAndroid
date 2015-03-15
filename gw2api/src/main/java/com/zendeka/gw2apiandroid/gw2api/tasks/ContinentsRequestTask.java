@@ -2,13 +2,11 @@ package com.zendeka.gw2apiandroid.gw2api.tasks;
 
 import android.os.AsyncTask;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-
 import java.io.BufferedReader;
-import java.io.InputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 /**
  * Created by lawrence on 9/4/14.
@@ -27,22 +25,22 @@ public class ContinentsRequestTask extends AsyncTask<String, String, String> {
     @Override
     protected String doInBackground(String... params) {
         String response = "";
-        String url = params[0];
-        DefaultHttpClient client = new DefaultHttpClient();
-        HttpGet httpGet = new HttpGet(url);
+        String urlString = params[0];
+        HttpURLConnection connection = null;
 
         try {
-            HttpResponse execute = client.execute(httpGet);
-            InputStream content = execute.getEntity().getContent();
-
-            BufferedReader buffer = new BufferedReader(new InputStreamReader(content));
-            String s;
-            while ((s = buffer.readLine()) != null) {
-                response += s;
-            }
+            URL url = new URL(urlString);
+            connection = (HttpURLConnection)url.openConnection();
+            InputStreamReader reader = new InputStreamReader(connection.getInputStream());
+            BufferedReader buffer = new BufferedReader(reader);
+            response = readResponse(buffer);
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            if (connection != null) {
+                connection.disconnect();
+            }
         }
 
         return response;
@@ -51,5 +49,15 @@ public class ContinentsRequestTask extends AsyncTask<String, String, String> {
     @Override
     protected void onPostExecute(String result) {
         mListener.continentsRequestTaskResult(result);
+    }
+
+    private String readResponse(BufferedReader buffer) throws IOException {
+        String response = "";
+        String s;
+        while ((s = buffer.readLine()) != null) {
+            response += s;
+        }
+
+        return response;
     }
 }

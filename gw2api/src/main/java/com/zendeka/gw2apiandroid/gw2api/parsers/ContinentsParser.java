@@ -75,8 +75,8 @@ public class ContinentsParser {
 
         jsonReader.endObject();
 
-        int[] floors = Conversion.convertIntegerListToArrayOfInt(floorsList);
-        Size dimensions = Conversion.convertIntegerListToSize(dimensionsList);
+        int[] floors = Conversion.convertList(floorsList);
+        Size dimensions = Conversion.createSize(dimensionsList);
         return new Continent(identifier, continentName, dimensions, minZoom, maxZoom, floors);
     }
 
