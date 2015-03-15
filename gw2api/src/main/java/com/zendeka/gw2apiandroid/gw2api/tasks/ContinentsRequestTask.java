@@ -34,7 +34,6 @@ public class ContinentsRequestTask extends AsyncTask<String, String, String> {
             InputStreamReader reader = new InputStreamReader(connection.getInputStream());
             BufferedReader buffer = new BufferedReader(reader);
             response = readResponse(buffer);
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

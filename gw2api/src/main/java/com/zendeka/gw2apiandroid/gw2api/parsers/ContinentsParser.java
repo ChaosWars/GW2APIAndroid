@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class ContinentsParser {
     public List<Continent> readContinents(JsonReader jsonReader) throws IOException {
-        ArrayList continents = new ArrayList();
+        ArrayList<Continent> continents = new ArrayList<>();
 
         jsonReader.beginObject();
 
