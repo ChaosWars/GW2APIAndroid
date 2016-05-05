@@ -24,15 +24,15 @@ public class Conversion {
      * @param list The list to create the array from
      * @return The array of int created from list
      */
-    public static int[] convertList(List<Integer> list) {
-        int[] newList = new int[list.size()];
-        int index = 0;
-
-        for (Integer value : list) {
-            newList[index] = value;
-            ++index;
-        }
-
-        return newList;
-    }
+//    public static int[] convertList(List<Integer> list) {
+//        int[] newList = new int[list.size()];
+//        int index = 0;
+//
+//        for (Integer value : list) {
+//            newList[index] = value;
+//            ++index;
+//        }
+//
+//        return newList;
+//    }
 }

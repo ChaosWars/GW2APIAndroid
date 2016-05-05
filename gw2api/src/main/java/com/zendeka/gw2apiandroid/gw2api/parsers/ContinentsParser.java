@@ -16,30 +16,19 @@ import java.util.List;
 public class ContinentsParser {
     public List<Continent> readContinents(JsonReader jsonReader) throws IOException {
         ArrayList<Continent> continents = new ArrayList<>();
-
-        jsonReader.beginObject();
+        jsonReader.beginArray();
 
         while (jsonReader.hasNext()) {
-            final String name = jsonReader.nextName();
-
-            if (name.equals("continents")) {
-                jsonReader.beginObject();
-
-                while (jsonReader.hasNext()) {
-                    Continent continent = readContinent(jsonReader);
-                    continents.add(continent);
-                }
-
-                jsonReader.endObject();
-            }
+            Continent continent = readContinent(jsonReader);
+            continents.add(continent);
         }
 
-        jsonReader.endObject();
+        jsonReader.endArray();
         return continents;
     }
 
     private Continent readContinent(JsonReader jsonReader) throws  IOException {
-        final int identifier = Integer.parseInt(jsonReader.nextName());
+        int identifier = 0;
         String continentName = "";
         final List<Integer> dimensionsList = new ArrayList<>();
         int minZoom = 0;
@@ -52,6 +41,9 @@ public class ContinentsParser {
             String name = jsonReader.nextName();
 
             switch (name) {
+                case "id":
+                    identifier = jsonReader.nextInt();
+                    break;
                 case "name":
                     continentName = jsonReader.nextString();
                     break;
@@ -75,9 +67,9 @@ public class ContinentsParser {
 
         jsonReader.endObject();
 
-        int[] floors = Conversion.convertList(floorsList);
+//        int[] floors = Conversion.convertList(floorsList);
         Size dimensions = Conversion.createSize(dimensionsList);
-        return new Continent(identifier, continentName, dimensions, minZoom, maxZoom, floors);
+        return new Continent(identifier, continentName, dimensions, minZoom, maxZoom, floorsList);
     }
 
     private void readIntArray(JsonReader jsonReader, List<Integer> list) throws IOException {

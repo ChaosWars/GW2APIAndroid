@@ -11,7 +11,7 @@ import java.lang.ref.WeakReference;
  */
 public class ContinentsRequest extends Fragment {
     public static final String TAG = "CONTINENTS_REQUEST";
-    private static final String URL = "https://api.guildwars2.com/v1/continents.json";
+    private static final String URL = "https://api.guildwars2.com/v2/continents.json";
     private WeakReference<ContinentsRequestTask> mTask;
 
     public ContinentsRequest() {

@@ -10,7 +10,7 @@ import java.util.concurrent.CountDownLatch;
  * Created by lawrence on 9/5/14.
  */
 public class ContinentsRequestTaskTest extends InstrumentationTestCase implements ContinentsRequestTask.OnContinentsRequestTaskCompleted {
-    private static final String URL = "https://api.guildwars2.com/v1/continents.json";
+    private static final String URL = "https://api.guildwars2.com/v2/continents.json";
     CountDownLatch mSignal;
 
     public void setUp() {

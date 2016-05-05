@@ -17,18 +17,13 @@ import java.util.List;
  */
 public class ContinentsParserTest extends InstrumentationTestCase {
     public void testParseContinents() {
-        InputStream inputStream = getInstrumentation().getTargetContext().getResources().openRawResource(R.raw.json_continents);
+        InputStream inputStream = getInstrumentation().getTargetContext().getResources().openRawResource(R.raw.json_continents_v2);
         InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
         JsonReader jsonReader = new JsonReader(inputStreamReader);
         ContinentsParser parser = new ContinentsParser();
 
         try {
             List<Continent> continentsList = parser.readContinents(jsonReader);
-
-            for (Continent continent : continentsList) {
-                System.out.println(continent.getName());
-            }
-
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -23,16 +23,16 @@ public class ConversionTest extends InstrumentationTestCase {
         assertEquals(2, size.getHeight());
     }
 
-    public void testConvertListOfIntegersToArrayOfInt() {
-        List<Integer> list = new ArrayList<>();
-        list.add(1);
-        list.add(2);
-        list.add(3);
-
-        int[] newList = Conversion.convertList(list);
-
-        assertEquals(1, newList[0]);
-        assertEquals(2, newList[1]);
-        assertEquals(3, newList[2]);
-    }
+//    public void testConvertListOfIntegersToArrayOfInt() {
+//        List<Integer> list = new ArrayList<>();
+//        list.add(1);
+//        list.add(2);
+//        list.add(3);
+//
+//        int[] newList = Conversion.convertList(list);
+//
+//        assertEquals(1, newList[0]);
+//        assertEquals(2, newList[1]);
+//        assertEquals(3, newList[2]);
+//    }
 }
