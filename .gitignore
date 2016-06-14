@@ -3,3 +3,5 @@ local.properties
 .idea
 .DS_Store
 /build
+GW2APIAndroid.iml
+gw2api/gw2api.iml
